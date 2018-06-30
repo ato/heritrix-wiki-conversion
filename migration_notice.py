@@ -7,7 +7,7 @@ if 'API_USER' in os.environ:
     api_auth = (os.environ['API_USER'], os.environ['API_TOKEN'])
 else:
     print('API_USER and API_TOKEN not set, doing dry run.')
-    api_auth = None # dry run
+    api_auth = None
 
 def migrate(page_id):
     api_url = "https://webarchive.jira.com/wiki/rest/api/content/" + str(page_id)
