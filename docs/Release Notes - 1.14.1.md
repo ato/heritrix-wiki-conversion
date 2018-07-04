@@ -1,0 +1,77 @@
+# Release Notes - 1.14.1
+
+# Release Notes - 1.14.1 (August 2008)
+
+These are the project wiki Release Notes for the 1.14.1 release.
+
+Release 1.14.1 is a bugfix release with a number of other small
+requested or contributed features.
+
+The 1.14.1 release will be available at [the archive-crawler Sourceforge
+project](https://sourceforge.net/project/showfiles.php?group_id=73833&package_id=73980&release_id=618433&abmode=1).
+
+## Notable Changes
+
+### Support for the 'Crawl-Delay' and 'Allow' robots.txt directives ([HER-1](https://webarchive.jira.com/browse/HER-1))
+
+Heritrix now supports two additional directives in robots.txt files that
+were not part of the original specification: the 'Allow' directive to
+permit crawling of URI path prefixes that would otherwise be prevented
+by shorted 'Disallow' URI path prefixes, and the 'Crawl-Delay' directive
+to request a crawler wait a specified number of seconds before
+revisiting a site.
+
+The length of a 'Crawl-Delay' respected may be capped by a new Frontier
+setting, 'respect-crawl-delay-up-to-secs'. The default for this value is
+to respect all Crawl-Delays up to 300 seconds (5 minutes).
+
+### WARCs written as version "WARC/0.18" ([HER-1525](https://webarchive.jira.com/browse/HER-1525))
+
+WARCs are now written with the declared format version "WARC/0.18".
+WARC/0.18 is functionally identical to WARC/0.17.
+
+### ExtractorSWF improved for &gt;64K SWFs ([HER-1511](https://webarchive.jira.com/browse/HER-1511))
+
+A bug in ExtractorSWF prevented URIs from being discovered in SWF files
+past the 64K mark, and has been fixed.
+
+### Replayed content (as for link extraction) better handles non-ISO-8859-1 single-byte encodings ([HER-1506](https://webarchive.jira.com/browse/HER-1506))
+
+A bug related to ByteReplayCharSequence was causing all substrings from
+single-byte encoded content to be interpreted as if they were 7-bit
+ASCII. For extracting URIs, which usually have non-ASCII characters
+percent-encoded, this was likely not a serious problem, but it presented
+problems using ByteReplayCharSequence for other content-analysis. The
+related classes have been fixed and refactored.
+
+### Extraction of 'speculative' URI strings from Javascript improved ([HER-1277](https://webarchive.jira.com/browse/HER-1277))
+
+When strings considered likely to be URIs are found in Javascript, those
+that appear to begin with hostnames or percent-encoded 'http://' will
+now be better handled as absolute, rather than relative, URIs.
+
+## Additional contributors
+
+In addition to the [usual
+suspects](http://crawler.archive.org/team-list.html), this release
+includes contributed fixes or functionality from:
+
+-   Olaf Freyer
+
+## All Tracked Changes
+
+The following tracked issues are recorded as addressed in this 1.14.1
+release:
+
+<http://webteam.archive.org/jira/secure/ReleaseNote.jspa?projectId=10021&styleName=Html&version=10060>
+
+type
+
+key
+
+summary
+
+status
+
+Unable to locate JIRA server for this macro. It may be due to
+Application Link configuration.
